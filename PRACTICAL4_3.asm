@@ -1,0 +1,27 @@
+DATA SEGMENT
+    X DW 0010
+DATA ENDS
+ASSUME CS:CODE DS:DATA
+CODE SEGMENT
+    START:
+    MOV AX,DATA
+    MOV DS,AX
+    MOV AX,X
+    MOV DX,X 
+    MOV BX,0000H
+    MOV CX,10H
+    
+    ONE:
+    ROL DX,1
+    JC GR
+    JMP NXT
+    
+    GR:
+    INC BX
+    
+    NXT:
+    DEC CX
+    JNZ ONE
+    
+CODE ENDS
+END START
